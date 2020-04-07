@@ -43,6 +43,15 @@
         <jar-plugin.version>3.0.2</jar-plugin.version>
 
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>localRepo</id>
+            <name>localRepo</name>
+            <url>${targetRepository}</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
      <repository>
       <id>mynexus-snapshot</id>

@@ -40,7 +40,7 @@ pipeline {
         }
     }        
      steps {
-       sh 'docker image build -t ${DB_REPOSITORY_TAG} ./mf-docker-images/docker/mfpostgres/'
+       sh 'docker image build -t ${REPOSITORY_TAG} ./mf-docker-images/docker/mfshell/'
      }
    }
 

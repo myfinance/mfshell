@@ -40,7 +40,7 @@ pipeline {
         }
     }        
      steps {
-       sh 'docker image build -t ${REPOSITORY_TAG} ./mf-docker-images/docker/mfshell/'
+       sh 'docker image build -t ${REPOSITORY_TAG} ./mf-docker-images/target/docker-prep/mfshell/'
      }
    }
 

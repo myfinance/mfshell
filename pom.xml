@@ -9,6 +9,8 @@
         <module>baserunner</module>
         <module>myfinance-java-rest-client</module>
         <module>myfinancerunner</module>
+        <module>run-job</module>
+        <module>mf-docker-images</module>
     </modules>
 
         <properties>

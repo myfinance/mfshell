@@ -5,29 +5,12 @@
     <groupId>de.hf.dac</groupId>
     <artifactId>mf-docker-images</artifactId>
     <parent>
-        <artifactId>distributions</artifactId>
         <groupId>de.hf.dac</groupId>
+        <artifactId>client</artifactId>
         <version>0.13.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
     <packaging>pom</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>de.hf.dac</groupId>
-            <artifactId>karaf-full</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
-
-    <profiles>
-        <profile>
-            <id>docker</id>
-            <activation>
-                <os>
-                    <name>linux</name>
-                </os>
-            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -49,51 +32,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>io.fabric8</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <version>${docker-maven-plugin.version}</version>
-                        <configuration>
-                            <images>
-                                <image>
-                                    <name>holgerfischer/myfinance:${project.version}-myfinance-full</name>
-                                    <build>
-                                        <dockerFileDir>${project.build.directory}/docker-prep/myfinance</dockerFileDir>
-                                        <filter>@</filter>
-                                    </build>
-                                </image>
-                                <!--<image>
-                                    <name>holgerfischer/myfinance:${project.version}-mfshell</name>
-                                    <build>
-                                        <dockerFileDir>${project.build.directory}/docker-prep/mfshell</dockerFileDir>
-                                        <filter>@</filter>
-                                    </build>
-                                </image>-->
-                            </images>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>build-docker</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <!-- "build" should be used to create the images with the
-                                         artifact -->
-                                    <goal>build</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>push-docker</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>push</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
-        </profile>
-
-    </profiles>
-
 </project>

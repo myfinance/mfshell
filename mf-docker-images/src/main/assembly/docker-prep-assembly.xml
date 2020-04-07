@@ -12,42 +12,6 @@
 
     <fileSets>
 
-        <!--karaf -->
-        <fileSet>
-            <outputDirectory>myfinance/MyFinance</outputDirectory>
-            <directory>${project.build.directory}/../../karaf-full/target/assembly</directory>
-            <includes>
-                <include>**/*</include>
-            </includes>
-        </fileSet>
-
-        <!-- Dockerfile -->
-        <fileSet>
-            <outputDirectory>myfinance</outputDirectory>
-            <directory>${project.build.directory}/../docker/myfinance</directory>
-            <includes>
-                <include>**/*</include>
-            </includes>
-        </fileSet>
-
-        <!-- dac.res and keystore-->
-        <fileSet>
-            <outputDirectory>myfinance</outputDirectory>
-	    <directory>${project.build.directory}/../../../basedistributions/basedockerimages/docker/myfinance</directory>
-            <includes>
-                <include>dac.res</include>
-                <include>devkeystore.jks</include>
-            </includes>
-    	</fileSet>
-
-        <fileSet>
-            <outputDirectory>myfinance/mfshell/lib</outputDirectory>
-            <directory>${project.build.directory}/../../run-job/target/lib</directory>
-            <includes>
-	            <include>**/*</include>
-	    </includes>
-	</fileSet>
-
 
         <!--mfshell -->
         <fileSet>
@@ -62,13 +26,6 @@
             <directory>${project.build.directory}/../../run-job/target</directory>
             <includes>
                 <include>run-job-mfshell.jar</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <outputDirectory>mfshell</outputDirectory>
-            <directory>${project.build.directory}/../../../basedistributions/basedockerimages/docker/myfinance</directory>
-            <includes>
-                <include>dac.res</include>
             </includes>
         </fileSet>
         <fileSet>

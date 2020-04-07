@@ -20,11 +20,13 @@
         <dependency>
             <groupId>de.hf.dac</groupId>
             <artifactId>baserunner</artifactId>
+            <version>${backend.version}</version>
         </dependency>
 
         <dependency>
             <groupId>de.hf.dac.myfinance.api</groupId>
             <artifactId>de.hf.dac.myfinance.api.application</artifactId>
+            <version>${backend.version}</version>
         </dependency>
 
         <dependency>
@@ -42,6 +44,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
         </dependency>
         <dependency>
             <groupId>de.hf.dac.io</groupId>
@@ -64,6 +67,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${jar-plugin.version}</version>
             </plugin>
         </plugins>
     </build>

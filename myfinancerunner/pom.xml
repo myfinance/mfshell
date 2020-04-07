@@ -7,7 +7,7 @@
         <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>de.hf.myfinance.client</groupId>
     <artifactId>myfinancerunner</artifactId>
 
     <properties>
@@ -36,7 +36,7 @@
         </dependency>
 
         <dependency>
-            <groupId>de.hf.dac.myfinance.client</groupId>
+            <groupId>de.hf.myfinance.client</groupId>
             <artifactId>myfinance-java-rest-client</artifactId>
             <version>${project.version}</version>
         </dependency>

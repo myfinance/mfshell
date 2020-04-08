@@ -19,7 +19,7 @@ spec:
         spec:
           containers: 
           - name: mfshell
-            image: holgerfischer/myfinance:0.13.0-SNAPSHOT-mfshell 
+            image: ${REPOSITORY_TAG} 
             args: ["i"]       
             volumeMounts:
             - name: myfinanceconfig

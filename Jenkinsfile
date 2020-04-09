@@ -7,8 +7,10 @@ pipeline {
    DOCKERHUB_USER = "holgerfischer"
    VERSION = "0.13.${BUILD_ID}"
    REPOSITORY_TAG = "${DOCKERHUB_USER}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${VERSION}"
-   NEXUS_URL = "192.168.100.73:31001"
+   K8N_IP = "192.168.100.73"
+   NEXUS_URL = "${K8N_IP}:31001"
    TARGET_REPO = "http://${NEXUS_URL}/repository/maven-snapshots/"
+   DOCKER_REPO = "${K8N_IP}:31003/repository/mydockerrepo/"
  }
 
  stages{
@@ -41,6 +43,8 @@ pipeline {
     }        
      steps {
        sh 'docker image build -t ${REPOSITORY_TAG} ./mf-docker-images/target/docker-prep/mfshell/'
+       sh 'docker tag ${REPOSITORY_TAG} ${DOCKER_REPO}${REPOSITORY_TAG}'
+       sh 'docker push ${DOCKER_REPO}${REPOSITORY_TAG}'
      }
    }
 

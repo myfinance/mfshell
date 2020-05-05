@@ -32,7 +32,7 @@
         <dependency>
             <groupId>de.hf.dac.myfinance</groupId>
             <artifactId>de.hf.dac.myfinance.runner</artifactId>
-            <version>${project.version}</version>
+            <version>${backend.version}</version>
         </dependency>
 
         <dependency>
@@ -46,12 +46,12 @@
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>de.hf.dac.io</groupId>
             <artifactId>de.hf.dac.io.web</artifactId>
-            <version>${project.version}</version>
+            <version>${backend.version}</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
 
     </dependencies>

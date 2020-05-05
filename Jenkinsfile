@@ -57,7 +57,7 @@ pipeline {
      steps {
        // sh 'envsubst < deploy.yaml | kubectl apply -f -'
        sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'
-       sh 'helm upgrade -i --cleanup-on-fail mfbackend ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
      }
    }
  }

@@ -20,7 +20,7 @@
         <dependency>
             <groupId>de.hf.dac</groupId>
             <artifactId>baserunner</artifactId>
-            <version>${backend.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

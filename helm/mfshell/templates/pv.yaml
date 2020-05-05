@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.pv.configpvc }}
 spec:
-  storageClassName: mfconfigstorage
+  storageClassName: mffeconfigstorage
   accessModes:
     - ReadOnlyMany
   resources:
@@ -15,9 +15,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfsstorage
+  name: mffeconfigstorage
 spec:
-  storageClassName: mfconfigstorage
+  storageClassName: mffeconfigstorage
   accessModes:
     - ReadOnlyMany
   capacity:

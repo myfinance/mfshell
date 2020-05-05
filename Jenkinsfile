@@ -5,11 +5,14 @@ pipeline {
    SERVICE_NAME = "mfshell"
    ORGANIZATION_NAME = "myfinance"
    DOCKERHUB_USER = "holgerfischer"
-   VERSION = "0.13.${BUILD_ID}"
+   //Snapshot Version
+   VERSION = "0.13.0-alpha.${BUILD_ID}"
+   //Release Version
+   //VERSION = "0.13.0"
    REPOSITORY_TAG = "${DOCKERHUB_USER}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${VERSION}"
    K8N_IP = "192.168.100.73"
    NEXUS_URL = "${K8N_IP}:31001"
-   TARGET_REPO = "http://${NEXUS_URL}/repository/maven-snapshots/"
+   TARGET_REPO = "http://${NEXUS_URL}/repository/maven-releases/"
    DOCKER_REPO = "${K8N_IP}:31003/repository/mydockerrepo/"
  }
 
@@ -32,6 +35,7 @@ pipeline {
         }
     }      
      steps {
+       sh '''mvn versions:set -DnewVersion=${VERSION}'''
        sh '''mvn clean deploy -DtargetRepository=${TARGET_REPO} -DNEXUS_URL=${NEXUS_URL}'''
      }
    }
@@ -51,7 +55,9 @@ pipeline {
    stage('deploy to cluster'){
      agent any
      steps {
-       sh 'envsubst < deploy.yaml | kubectl apply -f -'
+       // sh 'envsubst < deploy.yaml | kubectl apply -f -'
+       sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'
+       sh 'helm upgrade -i --cleanup-on-fail mfbackend ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
      }
    }
  }

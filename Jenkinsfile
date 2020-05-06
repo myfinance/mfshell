@@ -14,6 +14,7 @@ pipeline {
    NEXUS_URL = "${K8N_IP}:31001"
    TARGET_REPO = "http://${NEXUS_URL}/repository/maven-releases/"
    DOCKER_REPO = "${K8N_IP}:31003/repository/mydockerrepo/"
+   TARGET_HELM_REPO = "http://${NEXUS_URL}/repository/myhelmrepo/"
  }
 
  stages{
@@ -58,6 +59,8 @@ pipeline {
        // sh 'envsubst < deploy.yaml | kubectl apply -f -'
        sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'
        sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+      sh 'helm package helm/mfshell -u -d helmcharts/'
+       sh 'curl ${TARGET_HELM_REPO} --upload-file helmcharts/mfshell-${VERSION}.tgz -v'
      }
    }
  }

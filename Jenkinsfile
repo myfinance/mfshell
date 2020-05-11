@@ -57,10 +57,13 @@ pipeline {
      agent any
      steps {
        // sh 'envsubst < deploy.yaml | kubectl apply -f -'
-       sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'
-       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
-      sh 'helm package helm/mfshell -u -d helmcharts/'
+       sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'      
+       sh 'helm package helm/mfshell -u -d helmcharts/'
        sh 'curl ${TARGET_HELM_REPO} --upload-file helmcharts/mfshell-${VERSION}.tgz -v'
+       //install from local
+       //sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       //install from recently uploaded chart in the helm repository
+       sh 'helm upgrade -i --cleanup-on-fail mfshell myrepo/mfshell --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}- --devel'
      }
    }
  }

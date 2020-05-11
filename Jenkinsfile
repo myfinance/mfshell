@@ -63,7 +63,8 @@ pipeline {
        //install from local
        //sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
        //install from recently uploaded chart in the helm repository
-       sh 'helm upgrade -i --cleanup-on-fail mfshell myrepo/mfshell --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}- --devel'
+       sh 'helm repo update'
+       sh 'helm upgrade -i --cleanup-on-fail mfshell myrepo/mfshell --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}- --version ${VERSION} --devel'
      }
    }
  }

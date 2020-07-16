@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**getValueMap_envID_instrumentId_startdate_enddate**](MyFinanceApi.md#getValueMap_envID_instrumentId_startdate_enddate) | **GET** /myfinance/environments/{envID}/getvaluecurve/{instrumentId} | Map Data
 [**importPrices_envID**](MyFinanceApi.md#importPrices_envID) | **POST** /myfinance/environments/{envID}/importprices | importprices
 [**updateInstrument_envID_id_description_isactive**](MyFinanceApi.md#updateInstrument_envID_id_description_isactive) | **POST** /myfinance/environments/{envID}/updateInstrument | update Instrument
+[**updateTransaction_envID_id_description_value_transactiondate**](MyFinanceApi.md#updateTransaction_envID_id_description_value_transactiondate) | **POST** /myfinance/environments/{envID}/updateTransaction | update Transaction
 
 
 <a name="addBudget_envID_description_budgetGroupId"></a>
@@ -1023,6 +1024,58 @@ Name | Type | Description  | Notes
  **id** | **Integer**| id | [optional]
  **description** | **String**| description | [optional]
  **isactive** | **Boolean**| isactive | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="updateTransaction_envID_id_description_value_transactiondate"></a>
+# **updateTransaction_envID_id_description_value_transactiondate**
+> updateTransaction_envID_id_description_value_transactiondate(envID, id, description, value, transactiondate)
+
+update Transaction
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer id = 56; // Integer | id
+String description = "description_example"; // String | description
+Double value = 3.4D; // Double | the value of the income or expense
+String transactiondate = "transactiondate_example"; // String | the transactiondate(yyyy-mm-dd
+try {
+    apiInstance.updateTransaction_envID_id_description_value_transactiondate(envID, id, description, value, transactiondate);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#updateTransaction_envID_id_description_value_transactiondate");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **id** | **Integer**| id | [optional]
+ **description** | **String**| description | [optional]
+ **value** | **Double**| the value of the income or expense | [optional]
+ **transactiondate** | **String**| the transactiondate(yyyy-mm-dd | [optional]
 
 ### Return type
 

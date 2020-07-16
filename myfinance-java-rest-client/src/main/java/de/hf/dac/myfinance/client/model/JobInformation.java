@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * JobInformation
  */
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-03-23T23:45:07.507+01:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
 public class JobInformation {
   @JsonProperty("uuid")
   private String uuid = null;

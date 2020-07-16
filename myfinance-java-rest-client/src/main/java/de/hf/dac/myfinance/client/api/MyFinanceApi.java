@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-03-23T23:45:07.507+01:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
 public class MyFinanceApi {
   private ApiClient apiClient;
 
@@ -969,6 +969,55 @@ public class MyFinanceApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "id", id));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "description", description));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "isactive", isactive));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+
+    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
+  /**
+   * update Transaction
+   * 
+   * @param envID The Service Environment (required)
+   * @param id id (optional)
+   * @param description description (optional)
+   * @param value the value of the income or expense (optional)
+   * @param transactiondate the transactiondate(yyyy-mm-dd (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void updateTransaction_envID_id_description_value_transactiondate(String envID, Integer id, String description, Double value, String transactiondate) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'envID' is set
+    if (envID == null) {
+      throw new ApiException(400, "Missing the required parameter 'envID' when calling updateTransaction_envID_id_description_value_transactiondate");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/myfinance/environments/{envID}/updateTransaction"
+      .replaceAll("\\{" + "envID" + "\\}", apiClient.escapeString(envID.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "id", id));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "description", description));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "value", value));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "transactiondate", transactiondate));
 
     
     

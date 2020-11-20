@@ -1,5 +1,9 @@
 # mfshell
 
+build local:
+mvn clean install -DtargetRepository=http://192.168.100.73:31001/repository/maven-releases/ -DNEXUS_URL=192.168.100.73:31001
+or modify mvn settings
+
 to install the application manually with helm: 
 helm repo update
 helm upgrade -i --cleanup-on-fail mfshell local/mfshell --set stage=prod --devel

@@ -79,8 +79,8 @@ public abstract class BaseMFRunnerClient extends BaseRunner {
     }
 
     private MyFinanceRunnerApi createRestClient() {
-        String apiUser = Configuration.getString(CONFIG_SECTION, "MF_LAUNCH_USER");
-        String password = Configuration.getString(CONFIG_SECTION, "MF_LAUNCH_PASSWORD");
+        String apiUser = Configuration.getString(CONFIG_SECTION, "MF_LAUNCH_USER", "karaf");
+        String password = Configuration.getString(CONFIG_SECTION, "MF_LAUNCH_PASSWORD", "karaf");
         String basePath = Configuration.getString(CONFIG_SECTION, "MF_LAUNCH_URL", "http://localhost:8181/dac/rest");
         if (this.runnerClient == null) {
             if (password.startsWith("Basic ")) {

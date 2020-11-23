@@ -18,7 +18,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <backend.version>0.15.0-alpha.37</backend.version>
+        <backend.version>0.15.0</backend.version>
         <picocli.version>3.4.0</picocli.version><!-- parsing commandline options in Module common-->
 
         <junit.version>4.12</junit.version>

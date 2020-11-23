@@ -11,7 +11,8 @@ image:
 
 mfshell:
   name: mfshell
-  schedule: "1 15 * * *" 
+  priceimportschedule: "1 15 * * *"
+  processtransactionschedule: "1 17 * * *"
 
 pv:
   mntpath: /mnt/data/mf/

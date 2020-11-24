@@ -14,10 +14,12 @@
 package de.hf.dac.myfinance.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import de.hf.dac.myfinance.client.model.InstrumentListResource;
+import de.hf.dac.myfinance.client.model.RecurrentTransactionListResource;
 import de.hf.dac.myfinance.client.model.TenantListResource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,10 +27,16 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * EnvironmentDataResource
  */
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
+
+
+
 public class EnvironmentDataResource {
   @JsonProperty("instruments")
   private InstrumentListResource instruments = null;
+
+  @JsonProperty("recurrentTransaction")
+  private RecurrentTransactionListResource recurrentTransaction = null;
 
   @JsonProperty("tenants")
   private TenantListResource tenants = null;
@@ -49,6 +57,24 @@ public class EnvironmentDataResource {
 
   public void setInstruments(InstrumentListResource instruments) {
     this.instruments = instruments;
+  }
+
+  public EnvironmentDataResource recurrentTransaction(RecurrentTransactionListResource recurrentTransaction) {
+    this.recurrentTransaction = recurrentTransaction;
+    return this;
+  }
+
+   /**
+   * Get recurrentTransaction
+   * @return recurrentTransaction
+  **/
+  @ApiModelProperty(value = "")
+  public RecurrentTransactionListResource getRecurrentTransaction() {
+    return recurrentTransaction;
+  }
+
+  public void setRecurrentTransaction(RecurrentTransactionListResource recurrentTransaction) {
+    this.recurrentTransaction = recurrentTransaction;
   }
 
   public EnvironmentDataResource tenants(TenantListResource tenants) {
@@ -80,12 +106,13 @@ public class EnvironmentDataResource {
     }
     EnvironmentDataResource environmentDataResource = (EnvironmentDataResource) o;
     return Objects.equals(this.instruments, environmentDataResource.instruments) &&
+        Objects.equals(this.recurrentTransaction, environmentDataResource.recurrentTransaction) &&
         Objects.equals(this.tenants, environmentDataResource.tenants);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(instruments, tenants);
+    return Objects.hash(instruments, recurrentTransaction, tenants);
   }
 
 
@@ -95,6 +122,7 @@ public class EnvironmentDataResource {
     sb.append("class EnvironmentDataResource {\n");
     
     sb.append("    instruments: ").append(toIndentedString(instruments)).append("\n");
+    sb.append("    recurrentTransaction: ").append(toIndentedString(recurrentTransaction)).append("\n");
     sb.append("    tenants: ").append(toIndentedString(tenants)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -4,14 +4,63 @@ All URIs are relative to *https://localhost/dac/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getActiveInstrumentForTenantList_envID_tenant**](UtilityResourcesApi.md#getActiveInstrumentForTenantList_envID_tenant) | **GET** /myfinance/environments/{envID}/activeinstrumentsfortenant | List Data
 [**getInstrumentForTenantList_envID_tenant**](UtilityResourcesApi.md#getInstrumentForTenantList_envID_tenant) | **GET** /myfinance/environments/{envID}/instrumentsfortenant | List Data
 [**getInstrumentList_envID**](UtilityResourcesApi.md#getInstrumentList_envID) | **GET** /myfinance/environments/{envID}/instruments | List Data
 [**getInstrumentPerTypeList_envID_tenant_instrumenttype**](UtilityResourcesApi.md#getInstrumentPerTypeList_envID_tenant_instrumenttype) | **GET** /myfinance/environments/{envID}/instrumentspertype | List Data
 [**getInstrument_envID_isin**](UtilityResourcesApi.md#getInstrument_envID_isin) | **GET** /myfinance/environments/{envID}/getequity | get Data
+[**getRecurrentTransactionList_envID**](UtilityResourcesApi.md#getRecurrentTransactionList_envID) | **GET** /myfinance/environments/{envID}/listRecurrentTransactions | List Data
 [**getTenantList_envID**](UtilityResourcesApi.md#getTenantList_envID) | **GET** /myfinance/environments/{envID}/listTenants | List Data
 [**getTransactionList_envID_startdate_enddate**](UtilityResourcesApi.md#getTransactionList_envID_startdate_enddate) | **GET** /myfinance/environments/{envID}/listTransactions | List Data
 [**getValueMap_envID_instrumentId_startdate_enddate**](UtilityResourcesApi.md#getValueMap_envID_instrumentId_startdate_enddate) | **GET** /myfinance/environments/{envID}/getvaluecurve/{instrumentId} | Map Data
 
+
+<a name="getActiveInstrumentForTenantList_envID_tenant"></a>
+# **getActiveInstrumentForTenantList_envID_tenant**
+> InstrumentListModel getActiveInstrumentForTenantList_envID_tenant(envID, tenant)
+
+List Data
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.UtilityResourcesApi;
+
+
+UtilityResourcesApi apiInstance = new UtilityResourcesApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer tenant = 56; // Integer | tenant id
+try {
+    InstrumentListModel result = apiInstance.getActiveInstrumentForTenantList_envID_tenant(envID, tenant);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UtilityResourcesApi#getActiveInstrumentForTenantList_envID_tenant");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **tenant** | **Integer**| tenant id | [optional]
+
+### Return type
+
+[**InstrumentListModel**](InstrumentListModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getInstrumentForTenantList_envID_tenant"></a>
 # **getInstrumentForTenantList_envID_tenant**
@@ -191,6 +240,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InstrumentModel**](InstrumentModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getRecurrentTransactionList_envID"></a>
+# **getRecurrentTransactionList_envID**
+> RecurrentTransactionListModel getRecurrentTransactionList_envID(envID)
+
+List Data
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.UtilityResourcesApi;
+
+
+UtilityResourcesApi apiInstance = new UtilityResourcesApi();
+String envID = "envID_example"; // String | The Service Environment
+try {
+    RecurrentTransactionListModel result = apiInstance.getRecurrentTransactionList_envID(envID);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UtilityResourcesApi#getRecurrentTransactionList_envID");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+
+### Return type
+
+[**RecurrentTransactionListModel**](RecurrentTransactionListModel.md)
 
 ### Authorization
 

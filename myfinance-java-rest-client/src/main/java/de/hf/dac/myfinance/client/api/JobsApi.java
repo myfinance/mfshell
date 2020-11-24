@@ -2,6 +2,7 @@ package de.hf.dac.myfinance.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
+import io.swagger.client.ApiResponse;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 public class JobsApi {
   private ApiClient apiClient;
 
@@ -45,6 +46,19 @@ public class JobsApi {
    * @throws ApiException if fails to make API call
    */
   public JobInformation start(String env, String jobtype, BaseMFRunnerParameter params) throws ApiException {
+    return startWithHttpInfo(env, jobtype, params).getData();
+      }
+
+  /**
+   * execute myfinance launcher
+   * Execute myfinance Core Launcher
+   * @param env The env (required)
+   * @param jobtype launching md jobs z.b. de.hf.dac.myfinance.importer.Import (required)
+   * @param params Parameter (optional)
+   * @return ApiResponse&lt;JobInformation&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<JobInformation> startWithHttpInfo(String env, String jobtype, BaseMFRunnerParameter params) throws ApiException {
     Object localVarPostBody = params;
     
     // verify the required parameter 'env' is set

@@ -14,6 +14,7 @@
 package de.hf.dac.myfinance.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,7 +27,10 @@ import java.util.Map;
 /**
  * BaseMFRunnerParameter
  */
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
+
+
+
 public class BaseMFRunnerParameter {
   @JsonProperty("params")
   private Map<String, Object> params = null;

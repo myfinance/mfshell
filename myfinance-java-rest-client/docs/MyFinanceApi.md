@@ -10,21 +10,28 @@ Method | HTTP request | Description
 [**addGiro_envID_description_tenantId**](MyFinanceApi.md#addGiro_envID_description_tenantId) | **POST** /myfinance/environments/{envID}/addGiro | save Giro
 [**addIncomeExpense_envID_description_accId_budgetId_value_transactiondate**](MyFinanceApi.md#addIncomeExpense_envID_description_accId_budgetId_value_transactiondate) | **POST** /myfinance/environments/{envID}/addIncomeExpense | save Income or Expense
 [**addPrice_envID_currencyCode_isin_dayofprice_value**](MyFinanceApi.md#addPrice_envID_currencyCode_isin_dayofprice_value) | **POST** /myfinance/environments/{envID}/addPrice | save Price
+[**addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate**](MyFinanceApi.md#addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate) | **POST** /myfinance/environments/{envID}/addRecurrentTransfer | save RecurrentTransfer
 [**addSymbol_envID_isin_symbol_currencycode**](MyFinanceApi.md#addSymbol_envID_isin_symbol_currencycode) | **POST** /myfinance/environments/{envID}/addSymbol | save Instrument
 [**addTenant_envID_description**](MyFinanceApi.md#addTenant_envID_description) | **POST** /myfinance/environments/{envID}/addTenant | save Tenant
-[**addTransfer_envID_description_srcId_trgId_value_transactiondate**](MyFinanceApi.md#addTransfer_envID_description_srcId_trgId_value_transactiondate) | **POST** /myfinance/environments/{envID}/addTransfer | save Transfer
+[**addTransfer_envID_description_srcId_trgId_value_transactiondate**](MyFinanceApi.md#addTransfer_envID_description_srcId_trgId_value_transactiondate) | **POST** /myfinance/environments/{envID}/addTransfer | save Transfer or BudgetTransfer
+[**bookRecurrentTransactions_envID**](MyFinanceApi.md#bookRecurrentTransactions_envID) | **POST** /myfinance/environments/{envID}/bookRecurrentTransactions | bookRecurrentTransactions
+[**delRecurrentTransfer_envID_recurrentTransactionId**](MyFinanceApi.md#delRecurrentTransfer_envID_recurrentTransactionId) | **POST** /myfinance/environments/{envID}/delRecurrentTransfer | delete Recurrent Transfer
 [**delTransfer_envID_transactionId**](MyFinanceApi.md#delTransfer_envID_transactionId) | **POST** /myfinance/environments/{envID}/delTransfer | delete Transfer
 [**fillPricesHistory_envID_sourceId_isin**](MyFinanceApi.md#fillPricesHistory_envID_sourceId_isin) | **POST** /myfinance/environments/{envID}/fillpricehistory | fillpricehistory
+[**getActiveInstrumentForTenantList_envID_tenant**](MyFinanceApi.md#getActiveInstrumentForTenantList_envID_tenant) | **GET** /myfinance/environments/{envID}/activeinstrumentsfortenant | List Data
 [**getEnvironmentList**](MyFinanceApi.md#getEnvironmentList) | **GET** /myfinance/environments/list | List Environments
+[**getIncomeBudget_envID_budgetGroup**](MyFinanceApi.md#getIncomeBudget_envID_budgetGroup) | **GET** /myfinance/environments/{envID}/incomebudgetforbudgetgroup | get Data
 [**getInstrumentForTenantList_envID_tenant**](MyFinanceApi.md#getInstrumentForTenantList_envID_tenant) | **GET** /myfinance/environments/{envID}/instrumentsfortenant | List Data
 [**getInstrumentList_envID**](MyFinanceApi.md#getInstrumentList_envID) | **GET** /myfinance/environments/{envID}/instruments | List Data
 [**getInstrumentPerTypeList_envID_tenant_instrumenttype**](MyFinanceApi.md#getInstrumentPerTypeList_envID_tenant_instrumenttype) | **GET** /myfinance/environments/{envID}/instrumentspertype | List Data
 [**getInstrument_envID_isin**](MyFinanceApi.md#getInstrument_envID_isin) | **GET** /myfinance/environments/{envID}/getequity | get Data
+[**getRecurrentTransactionList_envID**](MyFinanceApi.md#getRecurrentTransactionList_envID) | **GET** /myfinance/environments/{envID}/listRecurrentTransactions | List Data
 [**getTenantList_envID**](MyFinanceApi.md#getTenantList_envID) | **GET** /myfinance/environments/{envID}/listTenants | List Data
 [**getTransactionList_envID_startdate_enddate**](MyFinanceApi.md#getTransactionList_envID_startdate_enddate) | **GET** /myfinance/environments/{envID}/listTransactions | List Data
 [**getValueMap_envID_instrumentId_startdate_enddate**](MyFinanceApi.md#getValueMap_envID_instrumentId_startdate_enddate) | **GET** /myfinance/environments/{envID}/getvaluecurve/{instrumentId} | Map Data
 [**importPrices_envID**](MyFinanceApi.md#importPrices_envID) | **POST** /myfinance/environments/{envID}/importprices | importprices
 [**updateInstrument_envID_id_description_isactive**](MyFinanceApi.md#updateInstrument_envID_id_description_isactive) | **POST** /myfinance/environments/{envID}/updateInstrument | update Instrument
+[**updateRecurrentTransaction_envID_id_description_value_nexttransaction**](MyFinanceApi.md#updateRecurrentTransaction_envID_id_description_value_nexttransaction) | **POST** /myfinance/environments/{envID}/updateRecurrentTransaction | update recurrent Transaction
 [**updateTransaction_envID_id_description_value_transactiondate**](MyFinanceApi.md#updateTransaction_envID_id_description_value_transactiondate) | **POST** /myfinance/environments/{envID}/updateTransaction | update Transaction
 
 
@@ -326,6 +333,62 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate"></a>
+# **addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate**
+> addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate(envID, description, srcId, trgId, recurrentFrequency, value, transactiondate)
+
+save RecurrentTransfer
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+String description = "description_example"; // String | description
+Integer srcId = 56; // Integer | the instrumentId of the source
+Integer trgId = 56; // Integer | the instrumentId of the target
+String recurrentFrequency = "recurrentFrequency_example"; // String | the frequency of the recurrent transaction
+Double value = 3.4D; // Double | the value of the income or expense
+String transactiondate = "transactiondate_example"; // String | the transactiondate(yyyy-mm-dd
+try {
+    apiInstance.addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate(envID, description, srcId, trgId, recurrentFrequency, value, transactiondate);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **description** | **String**| description | [optional]
+ **srcId** | **Integer**| the instrumentId of the source | [optional]
+ **trgId** | **Integer**| the instrumentId of the target | [optional]
+ **recurrentFrequency** | **String**| the frequency of the recurrent transaction | [optional] [enum: Monthly, Quaterly, Yearly, UNKNOWN]
+ **value** | **Double**| the value of the income or expense | [optional]
+ **transactiondate** | **String**| the transactiondate(yyyy-mm-dd | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="addSymbol_envID_isin_symbol_currencycode"></a>
 # **addSymbol_envID_isin_symbol_currencycode**
 > addSymbol_envID_isin_symbol_currencycode(envID, isin, symbol, currencycode)
@@ -426,7 +489,7 @@ No authorization required
 # **addTransfer_envID_description_srcId_trgId_value_transactiondate**
 > addTransfer_envID_description_srcId_trgId_value_transactiondate(envID, description, srcId, trgId, value, transactiondate)
 
-save Transfer
+save Transfer or BudgetTransfer
 
 
 
@@ -462,6 +525,96 @@ Name | Type | Description  | Notes
  **trgId** | **Integer**| the instrumentId of the target | [optional]
  **value** | **Double**| the value of the income or expense | [optional]
  **transactiondate** | **String**| the transactiondate(yyyy-mm-dd | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="bookRecurrentTransactions_envID"></a>
+# **bookRecurrentTransactions_envID**
+> bookRecurrentTransactions_envID(envID)
+
+bookRecurrentTransactions
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+try {
+    apiInstance.bookRecurrentTransactions_envID(envID);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#bookRecurrentTransactions_envID");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="delRecurrentTransfer_envID_recurrentTransactionId"></a>
+# **delRecurrentTransfer_envID_recurrentTransactionId**
+> delRecurrentTransfer_envID_recurrentTransactionId(envID, recurrentTransactionId)
+
+delete Recurrent Transfer
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer recurrentTransactionId = 56; // Integer | recurrentTransactionId
+try {
+    apiInstance.delRecurrentTransfer_envID_recurrentTransactionId(envID, recurrentTransactionId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#delRecurrentTransfer_envID_recurrentTransactionId");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **recurrentTransactionId** | **Integer**| recurrentTransactionId | [optional]
 
 ### Return type
 
@@ -570,6 +723,53 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getActiveInstrumentForTenantList_envID_tenant"></a>
+# **getActiveInstrumentForTenantList_envID_tenant**
+> InstrumentListModel getActiveInstrumentForTenantList_envID_tenant(envID, tenant)
+
+List Data
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer tenant = 56; // Integer | tenant id
+try {
+    InstrumentListModel result = apiInstance.getActiveInstrumentForTenantList_envID_tenant(envID, tenant);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#getActiveInstrumentForTenantList_envID_tenant");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **tenant** | **Integer**| tenant id | [optional]
+
+### Return type
+
+[**InstrumentListModel**](InstrumentListModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getEnvironmentList"></a>
 # **getEnvironmentList**
 > StringListModel getEnvironmentList()
@@ -601,6 +801,53 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**StringListModel**](StringListModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getIncomeBudget_envID_budgetGroup"></a>
+# **getIncomeBudget_envID_budgetGroup**
+> InstrumentModel getIncomeBudget_envID_budgetGroup(envID, budgetGroup)
+
+get Data
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer budgetGroup = 56; // Integer | budgetGroup id
+try {
+    InstrumentModel result = apiInstance.getIncomeBudget_envID_budgetGroup(envID, budgetGroup);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#getIncomeBudget_envID_budgetGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **budgetGroup** | **Integer**| budgetGroup id | [optional]
+
+### Return type
+
+[**InstrumentModel**](InstrumentModel.md)
 
 ### Authorization
 
@@ -789,6 +1036,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InstrumentModel**](InstrumentModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getRecurrentTransactionList_envID"></a>
+# **getRecurrentTransactionList_envID**
+> RecurrentTransactionListModel getRecurrentTransactionList_envID(envID)
+
+List Data
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+try {
+    RecurrentTransactionListModel result = apiInstance.getRecurrentTransactionList_envID(envID);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#getRecurrentTransactionList_envID");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+
+### Return type
+
+[**RecurrentTransactionListModel**](RecurrentTransactionListModel.md)
 
 ### Authorization
 
@@ -1024,6 +1316,58 @@ Name | Type | Description  | Notes
  **id** | **Integer**| id | [optional]
  **description** | **String**| description | [optional]
  **isactive** | **Boolean**| isactive | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="updateRecurrentTransaction_envID_id_description_value_nexttransaction"></a>
+# **updateRecurrentTransaction_envID_id_description_value_nexttransaction**
+> updateRecurrentTransaction_envID_id_description_value_nexttransaction(envID, id, description, value, nexttransaction)
+
+update recurrent Transaction
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import de.hf.dac.myfinance.client.api.MyFinanceApi;
+
+
+MyFinanceApi apiInstance = new MyFinanceApi();
+String envID = "envID_example"; // String | The Service Environment
+Integer id = 56; // Integer | id
+String description = "description_example"; // String | description
+Double value = 3.4D; // Double | the value of the income or expense
+String nexttransaction = "nexttransaction_example"; // String | the transactiondate(yyyy-mm-dd
+try {
+    apiInstance.updateRecurrentTransaction_envID_id_description_value_nexttransaction(envID, id, description, value, nexttransaction);
+} catch (ApiException e) {
+    System.err.println("Exception when calling MyFinanceApi#updateRecurrentTransaction_envID_id_description_value_nexttransaction");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **envID** | **String**| The Service Environment |
+ **id** | **Integer**| id | [optional]
+ **description** | **String**| description | [optional]
+ **value** | **Double**| the value of the income or expense | [optional]
+ **nexttransaction** | **String**| the transactiondate(yyyy-mm-dd | [optional]
 
 ### Return type
 

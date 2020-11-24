@@ -26,12 +26,12 @@
         <commons-codec.version>1.10</commons-codec.version>
 
         <!--rest-->
-        <swagger.version>1.5.19</swagger.version>
+        <swagger.version>1.6.2</swagger.version>
         <swagger-codegen.version>2.3.1</swagger-codegen.version>
-        <jackson.version>2.9.5</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
 
         <spring-servicemix.version>4.2.6.RELEASE_1</spring-servicemix.version>
-        <rs-api-jersey-client.version>2.1</rs-api-jersey-client.version>
+        <rs-api-jersey-client.version>1.5.18</rs-api-jersey-client.version>
 
         <assembly-plugin.version>3.1.0</assembly-plugin.version>
         <dependency-plugin.version>3.0.2</dependency-plugin.version>

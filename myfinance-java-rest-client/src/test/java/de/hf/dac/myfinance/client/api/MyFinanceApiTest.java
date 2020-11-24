@@ -17,6 +17,7 @@ import io.swagger.client.ApiException;
 import de.hf.dac.myfinance.client.model.DateDoubleModel;
 import de.hf.dac.myfinance.client.model.InstrumentListModel;
 import de.hf.dac.myfinance.client.model.InstrumentModel;
+import de.hf.dac.myfinance.client.model.RecurrentTransactionListModel;
 import de.hf.dac.myfinance.client.model.StringListModel;
 import de.hf.dac.myfinance.client.model.TransactionListModel;
 import org.junit.Test;
@@ -150,6 +151,28 @@ public class MyFinanceApiTest {
     }
     
     /**
+     * save RecurrentTransfer
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondateTest() throws ApiException {
+        String envID = null;
+        String description = null;
+        Integer srcId = null;
+        Integer trgId = null;
+        String recurrentFrequency = null;
+        Double value = null;
+        String transactiondate = null;
+        api.addRecurrentTransfer_envID_description_srcId_trgId_recurrentFrequency_value_transactiondate(envID, description, srcId, trgId, recurrentFrequency, value, transactiondate);
+
+        // TODO: test validations
+    }
+    
+    /**
      * save Instrument
      *
      * 
@@ -186,7 +209,7 @@ public class MyFinanceApiTest {
     }
     
     /**
-     * save Transfer
+     * save Transfer or BudgetTransfer
      *
      * 
      *
@@ -202,6 +225,39 @@ public class MyFinanceApiTest {
         Double value = null;
         String transactiondate = null;
         api.addTransfer_envID_description_srcId_trgId_value_transactiondate(envID, description, srcId, trgId, value, transactiondate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * bookRecurrentTransactions
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void bookRecurrentTransactions_envIDTest() throws ApiException {
+        String envID = null;
+        api.bookRecurrentTransactions_envID(envID);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * delete Recurrent Transfer
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void delRecurrentTransfer_envID_recurrentTransactionIdTest() throws ApiException {
+        String envID = null;
+        Integer recurrentTransactionId = null;
+        api.delRecurrentTransfer_envID_recurrentTransactionId(envID, recurrentTransactionId);
 
         // TODO: test validations
     }
@@ -242,6 +298,23 @@ public class MyFinanceApiTest {
     }
     
     /**
+     * List Data
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getActiveInstrumentForTenantList_envID_tenantTest() throws ApiException {
+        String envID = null;
+        Integer tenant = null;
+        InstrumentListModel response = api.getActiveInstrumentForTenantList_envID_tenant(envID, tenant);
+
+        // TODO: test validations
+    }
+    
+    /**
      * List Environments
      *
      * 
@@ -252,6 +325,23 @@ public class MyFinanceApiTest {
     @Test
     public void getEnvironmentListTest() throws ApiException {
         StringListModel response = api.getEnvironmentList();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * get Data
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getIncomeBudget_envID_budgetGroupTest() throws ApiException {
+        String envID = null;
+        Integer budgetGroup = null;
+        InstrumentModel response = api.getIncomeBudget_envID_budgetGroup(envID, budgetGroup);
 
         // TODO: test validations
     }
@@ -320,6 +410,22 @@ public class MyFinanceApiTest {
         String envID = null;
         String isin = null;
         InstrumentModel response = api.getInstrument_envID_isin(envID, isin);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List Data
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRecurrentTransactionList_envIDTest() throws ApiException {
+        String envID = null;
+        RecurrentTransactionListModel response = api.getRecurrentTransactionList_envID(envID);
 
         // TODO: test validations
     }
@@ -408,6 +514,46 @@ public class MyFinanceApiTest {
         String description = null;
         Boolean isactive = null;
         api.updateInstrument_envID_id_description_isactive(envID, id, description, isactive);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * update recurrent Transaction
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateRecurrentTransaction_envID_id_description_value_nexttransactionTest() throws ApiException {
+        String envID = null;
+        Integer id = null;
+        String description = null;
+        Double value = null;
+        String nexttransaction = null;
+        api.updateRecurrentTransaction_envID_id_description_value_nexttransaction(envID, id, description, value, nexttransaction);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * update Transaction
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateTransaction_envID_id_description_value_transactiondateTest() throws ApiException {
+        String envID = null;
+        Integer id = null;
+        String description = null;
+        Double value = null;
+        String transactiondate = null;
+        api.updateTransaction_envID_id_description_value_transactiondate(envID, id, description, value, transactiondate);
 
         // TODO: test validations
     }

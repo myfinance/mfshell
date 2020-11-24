@@ -17,13 +17,13 @@ import java.util.Objects;
 import java.util.Arrays;
 
 /**
- * InstrumentListResource
+ * RecurrentTransactionListResource
  */
 @javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 
 
 
-public class InstrumentListResource {
+public class RecurrentTransactionListResource {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -45,7 +45,7 @@ public class InstrumentListResource {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstrumentListResource {\n");
+    sb.append("class RecurrentTransactionListResource {\n");
     
     sb.append("}");
     return sb.toString();

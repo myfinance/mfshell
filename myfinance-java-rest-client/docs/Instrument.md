@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentid** | **Integer** |  | 
+**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) |  | 
 **description** | **String** |  | 
 **isactive** | **Boolean** |  | 
 **maturitydate** | [**LocalDate**](LocalDate.md) |  |  [optional]
 **closingdate** | [**LocalDate**](LocalDate.md) |  |  [optional]
 **treelastchanged** | [**LocalDateTime**](LocalDateTime.md) |  | 
-**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) |  | 
 **businesskey** | **String** |  |  [optional]
 
 

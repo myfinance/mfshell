@@ -18,20 +18,20 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import de.hf.dac.myfinance.client.model.RecurrentTransaction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
- * DateDoubleModel
+ * RecurrentTransactionListModel
  */
 @javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 
 
 
-public class DateDoubleModel {
+public class RecurrentTransactionListModel {
   @JsonProperty("url")
   private String url = null;
 
@@ -39,9 +39,9 @@ public class DateDoubleModel {
   private String id = null;
 
   @JsonProperty("values")
-  private Map<String, Double> values = new HashMap<>();
+  private List<RecurrentTransaction> values = new ArrayList<>();
 
-  public DateDoubleModel url(String url) {
+  public RecurrentTransactionListModel url(String url) {
     this.url = url;
     return this;
   }
@@ -59,7 +59,7 @@ public class DateDoubleModel {
     this.url = url;
   }
 
-  public DateDoubleModel id(String id) {
+  public RecurrentTransactionListModel id(String id) {
     this.id = id;
     return this;
   }
@@ -77,13 +77,13 @@ public class DateDoubleModel {
     this.id = id;
   }
 
-  public DateDoubleModel values(Map<String, Double> values) {
+  public RecurrentTransactionListModel values(List<RecurrentTransaction> values) {
     this.values = values;
     return this;
   }
 
-  public DateDoubleModel putValuesItem(String key, Double valuesItem) {
-    this.values.put(key, valuesItem);
+  public RecurrentTransactionListModel addValuesItem(RecurrentTransaction valuesItem) {
+    this.values.add(valuesItem);
     return this;
   }
 
@@ -92,11 +92,11 @@ public class DateDoubleModel {
    * @return values
   **/
   @ApiModelProperty(required = true, value = "")
-  public Map<String, Double> getValues() {
+  public List<RecurrentTransaction> getValues() {
     return values;
   }
 
-  public void setValues(Map<String, Double> values) {
+  public void setValues(List<RecurrentTransaction> values) {
     this.values = values;
   }
 
@@ -109,10 +109,10 @@ public class DateDoubleModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DateDoubleModel dateDoubleModel = (DateDoubleModel) o;
-    return Objects.equals(this.url, dateDoubleModel.url) &&
-        Objects.equals(this.id, dateDoubleModel.id) &&
-        Objects.equals(this.values, dateDoubleModel.values);
+    RecurrentTransactionListModel recurrentTransactionListModel = (RecurrentTransactionListModel) o;
+    return Objects.equals(this.url, recurrentTransactionListModel.url) &&
+        Objects.equals(this.id, recurrentTransactionListModel.id) &&
+        Objects.equals(this.values, recurrentTransactionListModel.values);
   }
 
   @Override
@@ -124,7 +124,7 @@ public class DateDoubleModel {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DateDoubleModel {\n");
+    sb.append("class RecurrentTransactionListModel {\n");
     
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

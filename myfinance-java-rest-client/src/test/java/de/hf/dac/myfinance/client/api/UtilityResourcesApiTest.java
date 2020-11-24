@@ -17,6 +17,7 @@ import io.swagger.client.ApiException;
 import de.hf.dac.myfinance.client.model.DateDoubleModel;
 import de.hf.dac.myfinance.client.model.InstrumentListModel;
 import de.hf.dac.myfinance.client.model.InstrumentModel;
+import de.hf.dac.myfinance.client.model.RecurrentTransactionListModel;
 import de.hf.dac.myfinance.client.model.TransactionListModel;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -34,6 +35,23 @@ public class UtilityResourcesApiTest {
 
     private final UtilityResourcesApi api = new UtilityResourcesApi();
 
+    
+    /**
+     * List Data
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getActiveInstrumentForTenantList_envID_tenantTest() throws ApiException {
+        String envID = null;
+        Integer tenant = null;
+        InstrumentListModel response = api.getActiveInstrumentForTenantList_envID_tenant(envID, tenant);
+
+        // TODO: test validations
+    }
     
     /**
      * List Data
@@ -99,6 +117,22 @@ public class UtilityResourcesApiTest {
         String envID = null;
         String isin = null;
         InstrumentModel response = api.getInstrument_envID_isin(envID, isin);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List Data
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRecurrentTransactionList_envIDTest() throws ApiException {
+        String envID = null;
+        RecurrentTransactionListModel response = api.getRecurrentTransactionList_envID(envID);
 
         // TODO: test validations
     }

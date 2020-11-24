@@ -2,6 +2,7 @@ package de.hf.dac.myfinance.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
+import io.swagger.client.ApiResponse;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 public class HelloApi {
   private ApiClient apiClient;
 
@@ -40,6 +41,16 @@ public class HelloApi {
    * @throws ApiException if fails to make API call
    */
   public String getHello() throws ApiException {
+    return getHelloWithHttpInfo().getData();
+      }
+
+  /**
+   * 
+   * 
+   * @return ApiResponse&lt;String&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<String> getHelloWithHttpInfo() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -75,6 +86,16 @@ public class HelloApi {
    * @throws ApiException if fails to make API call
    */
   public String getProducts() throws ApiException {
+    return getProductsWithHttpInfo().getData();
+      }
+
+  /**
+   * 
+   * 
+   * @return ApiResponse&lt;String&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<String> getProductsWithHttpInfo() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

@@ -14,6 +14,7 @@
 package de.hf.dac.myfinance.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,25 +26,13 @@ import java.time.LocalDateTime;
 /**
  * Instrument
  */
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
+
+
+
 public class Instrument {
   @JsonProperty("instrumentid")
   private Integer instrumentid = null;
-
-  @JsonProperty("description")
-  private String description = null;
-
-  @JsonProperty("isactive")
-  private Boolean isactive = null;
-
-  @JsonProperty("maturitydate")
-  private LocalDate maturitydate = null;
-
-  @JsonProperty("closingdate")
-  private LocalDate closingdate = null;
-
-  @JsonProperty("treelastchanged")
-  private LocalDateTime treelastchanged = null;
 
   /**
    * Gets or Sets instrumentType
@@ -123,6 +112,21 @@ public class Instrument {
   @JsonProperty("instrumentType")
   private InstrumentTypeEnum instrumentType = null;
 
+  @JsonProperty("description")
+  private String description = null;
+
+  @JsonProperty("isactive")
+  private Boolean isactive = null;
+
+  @JsonProperty("maturitydate")
+  private LocalDate maturitydate = null;
+
+  @JsonProperty("closingdate")
+  private LocalDate closingdate = null;
+
+  @JsonProperty("treelastchanged")
+  private LocalDateTime treelastchanged = null;
+
   @JsonProperty("businesskey")
   private String businesskey = null;
 
@@ -142,6 +146,24 @@ public class Instrument {
 
   public void setInstrumentid(Integer instrumentid) {
     this.instrumentid = instrumentid;
+  }
+
+  public Instrument instrumentType(InstrumentTypeEnum instrumentType) {
+    this.instrumentType = instrumentType;
+    return this;
+  }
+
+   /**
+   * Get instrumentType
+   * @return instrumentType
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public InstrumentTypeEnum getInstrumentType() {
+    return instrumentType;
+  }
+
+  public void setInstrumentType(InstrumentTypeEnum instrumentType) {
+    this.instrumentType = instrumentType;
   }
 
   public Instrument description(String description) {
@@ -234,24 +256,6 @@ public class Instrument {
     this.treelastchanged = treelastchanged;
   }
 
-  public Instrument instrumentType(InstrumentTypeEnum instrumentType) {
-    this.instrumentType = instrumentType;
-    return this;
-  }
-
-   /**
-   * Get instrumentType
-   * @return instrumentType
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public InstrumentTypeEnum getInstrumentType() {
-    return instrumentType;
-  }
-
-  public void setInstrumentType(InstrumentTypeEnum instrumentType) {
-    this.instrumentType = instrumentType;
-  }
-
   public Instrument businesskey(String businesskey) {
     this.businesskey = businesskey;
     return this;
@@ -281,18 +285,18 @@ public class Instrument {
     }
     Instrument instrument = (Instrument) o;
     return Objects.equals(this.instrumentid, instrument.instrumentid) &&
+        Objects.equals(this.instrumentType, instrument.instrumentType) &&
         Objects.equals(this.description, instrument.description) &&
         Objects.equals(this.isactive, instrument.isactive) &&
         Objects.equals(this.maturitydate, instrument.maturitydate) &&
         Objects.equals(this.closingdate, instrument.closingdate) &&
         Objects.equals(this.treelastchanged, instrument.treelastchanged) &&
-        Objects.equals(this.instrumentType, instrument.instrumentType) &&
         Objects.equals(this.businesskey, instrument.businesskey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentid, description, isactive, maturitydate, closingdate, treelastchanged, instrumentType, businesskey);
+    return Objects.hash(instrumentid, instrumentType, description, isactive, maturitydate, closingdate, treelastchanged, businesskey);
   }
 
 
@@ -302,12 +306,12 @@ public class Instrument {
     sb.append("class Instrument {\n");
     
     sb.append("    instrumentid: ").append(toIndentedString(instrumentid)).append("\n");
+    sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isactive: ").append(toIndentedString(isactive)).append("\n");
     sb.append("    maturitydate: ").append(toIndentedString(maturitydate)).append("\n");
     sb.append("    closingdate: ").append(toIndentedString(closingdate)).append("\n");
     sb.append("    treelastchanged: ").append(toIndentedString(treelastchanged)).append("\n");
-    sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    businesskey: ").append(toIndentedString(businesskey)).append("\n");
     sb.append("}");
     return sb.toString();

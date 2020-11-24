@@ -2,6 +2,7 @@ package de.hf.dac.myfinance.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
+import io.swagger.client.ApiResponse;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 public class MyFinanceRunnerApi {
   private ApiClient apiClient;
 
@@ -42,6 +43,16 @@ public class MyFinanceRunnerApi {
    * @throws ApiException if fails to make API call
    */
   public List<Object> list() throws ApiException {
+    return listWithHttpInfo().getData();
+      }
+
+  /**
+   * list known cops jobs
+   * List all JobInformation
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<Object>> listWithHttpInfo() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -80,6 +91,19 @@ public class MyFinanceRunnerApi {
    * @throws ApiException if fails to make API call
    */
   public JobInformation start(String env, String jobtype, BaseMFRunnerParameter params) throws ApiException {
+    return startWithHttpInfo(env, jobtype, params).getData();
+      }
+
+  /**
+   * execute myfinance launcher
+   * Execute myfinance Core Launcher
+   * @param env The env (required)
+   * @param jobtype launching md jobs z.b. de.hf.dac.myfinance.importer.Import (required)
+   * @param params Parameter (optional)
+   * @return ApiResponse&lt;JobInformation&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<JobInformation> startWithHttpInfo(String env, String jobtype, BaseMFRunnerParameter params) throws ApiException {
     Object localVarPostBody = params;
     
     // verify the required parameter 'env' is set
@@ -128,6 +152,17 @@ public class MyFinanceRunnerApi {
    * @throws ApiException if fails to make API call
    */
   public JobInformation status(String uuid) throws ApiException {
+    return statusWithHttpInfo(uuid).getData();
+      }
+
+  /**
+   * get status of cops jobs
+   * JobInformation of actual Job
+   * @param uuid uuid of job (required)
+   * @return ApiResponse&lt;JobInformation&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<JobInformation> statusWithHttpInfo(String uuid) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'uuid' is set

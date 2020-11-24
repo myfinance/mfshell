@@ -50,7 +50,7 @@ import io.swagger.client.auth.HttpBasicAuth;
 import io.swagger.client.auth.ApiKeyAuth;
 import io.swagger.client.auth.OAuth;
 
-@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-07-17T02:16:39.752+02:00")
+@javax.annotation.Generated(value = "de.hf.dac.myfinance.codegen.MyFinanceClient_JavaGenerator", date = "2020-11-24T14:07:06.698+01:00")
 public class ApiClient {
   protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   protected String basePath = "https://localhost/dac/rest";
@@ -63,9 +63,6 @@ public class ApiClient {
   protected String tempFolderPath = null;
 
   protected Map<String, Authentication> authentications;
-
-  protected int statusCode;
-  protected Map<String, List<String>> responseHeaders;
 
   protected DateFormat dateFormat;
 
@@ -108,22 +105,6 @@ public class ApiClient {
   public ApiClient setBasePath(String basePath) {
     this.basePath = basePath;
     return this;
-  }
-
-  /**
-   * Gets the status code of the previous request
-   * @return Status code
-   */
-  public int getStatusCode() {
-    return statusCode;
-  }
-
-  /**
-   * Gets the response headers of the previous request
-   * @return Response headers
-   */
-  public Map<String, List<String>> getResponseHeaders() {
-    return responseHeaders;
   }
 
   /**
@@ -654,7 +635,7 @@ public class ApiClient {
    * @return The response body in type of string
    * @throws ApiException API exception
    */
-  public <T> T invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
+  public <T> ApiResponse<T> invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
     updateParamsForAuth(authNames, queryParams, headerParams);
 
     // Not using `.target(this.basePath).path(path)` below,
@@ -709,16 +690,16 @@ public class ApiClient {
         throw new ApiException(500, "unknown method type " + method);
       }
 
-      statusCode = response.getStatusInfo().getStatusCode();
-      responseHeaders = buildResponseHeaders(response);
+      int statusCode = response.getStatusInfo().getStatusCode();
+      Map<String, List<String>> responseHeaders = buildResponseHeaders(response);
 
       if (response.getStatus() == Status.NO_CONTENT.getStatusCode()) {
-        return null;
+        return new ApiResponse<>(statusCode, responseHeaders);
       } else if (response.getStatusInfo().getFamily() == Status.Family.SUCCESSFUL) {
         if (returnType == null)
-          return null;
+          return new ApiResponse<>(statusCode, responseHeaders);
         else
-          return deserialize(response, returnType);
+          return new ApiResponse<>(statusCode, responseHeaders, deserialize(response, returnType));
       } else {
         String message = "error";
         String respBody = null;

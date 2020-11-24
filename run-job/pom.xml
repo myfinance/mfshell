@@ -65,11 +65,9 @@
                             <archive>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
+                                    <classpathPrefix>lib/</classpathPrefix>
                                     <mainClass>de.hf.dac.myfinance.runner.MfShell</mainClass>
                                 </manifest>
-                                <manifestEntries>
-                                    <Class-Path>lib/myfinancerunner-${project.version}.jar</Class-Path>
-                                </manifestEntries>
                             </archive>
                         </configuration>
                     </execution>

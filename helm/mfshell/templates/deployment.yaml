@@ -27,7 +27,7 @@ spec:
           volumes:
           - name: myfinanceconfig
             persistentVolumeClaim:
-              claimName: mfconfigpvc 
+              claimName: {{ .Values.stage }}-mfconfigpvc 
           restartPolicy: OnFailure     
       backoffLimit: 4  
 
@@ -62,6 +62,6 @@ spec:
           volumes:
             - name: myfinanceconfig
               persistentVolumeClaim:
-                claimName: mfconfigpvc
+                claimName: {{ .Values.stage }}-mfconfigpvc
           restartPolicy: OnFailure
       backoffLimit: 4

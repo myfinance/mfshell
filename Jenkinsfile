@@ -60,7 +60,9 @@ pipeline {
        sh 'envsubst < ./helm/mfshell/Chart_template.yaml > ./helm/mfshell/Chart.yaml'      
        sh 'helm package helm/mfshell -u -d helmcharts/'
        sh 'curl ${TARGET_HELM_REPO} --upload-file helmcharts/mfshell-${VERSION}.tgz -v'
-       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       // no jobs for dev necessary
+       // sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set stage=test --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
      }
    }
  }

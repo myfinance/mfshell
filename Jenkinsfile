@@ -15,6 +15,8 @@ pipeline {
    TARGET_REPO = "http://${NEXUS_URL}/repository/maven-releases/"
    DOCKER_REPO = "${K8N_IP}:31003/repository/mydockerrepo/"
    TARGET_HELM_REPO = "http://${NEXUS_URL}/repository/myhelmrepo/"
+   DEV_NAMESPACE = "mfdev"
+   TEST_NAMESPACE = "mftest"
  }
 
  stages{
@@ -61,8 +63,8 @@ pipeline {
        sh 'helm package helm/mfshell -u -d helmcharts/'
        sh 'curl ${TARGET_HELM_REPO} --upload-file helmcharts/mfshell-${VERSION}.tgz -v'
        // no jobs for dev necessary
-       // sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
-       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ --set stage=test --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       // sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ -n ${TEST_NAMESPACE} --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
+       sh 'helm upgrade -i --cleanup-on-fail mfshell ./helm/mfshell/ -n ${TEST_NAMESPACE} --set stage=test --set repository=${DOCKER_REPO}/${DOCKERHUB_USER}/${ORGANIZATION_NAME}-'
      }
    }
  }

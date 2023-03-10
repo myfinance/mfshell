@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>de.hf.myfinance.mftransactions</groupId>
+    <groupId>de.hf.myfinance.mfshell</groupId>
     <artifactId>mfshell</artifactId>
     <version>0.0.0-0-SNAPSHOT</version>
     <name>MFShell</name>
     <parent>
         <groupId>de.hf.myfinance</groupId>
         <artifactId>root</artifactId>
-        <version>0.0.0-0-SNAPSHOT</version>
-        <!--<version>0.22.0-alpha.792d0ff0760b9c20ff2140ee9f709fb0ec9d8fbc</version>-->
+        <!--<version>0.0.0-0-SNAPSHOT</version>-->
+        <version>0.22.0-alpha.a4c4b805ddefc9978ca9d6492a11ecc793800cc9</version>
        <relativePath/>
    </parent>
    <properties>
        <NEXUS_URL>192.168.100.73:31001</NEXUS_URL>
-       <!--<MFFrameWork.Version>0.22.0-alpha.792d0ff0760b9c20ff2140ee9f709fb0ec9d8fbc</MFFrameWork.Version>-->
-        <MFFrameWork.Version>0.0.0-0-SNAPSHOT</MFFrameWork.Version>
-        <jib.container-name>holgerfischer/myfinance-mfshell:</jib.container-name>
-    </properties>
+       <MFFrameWork.Version>0.22.0-alpha.a4c4b805ddefc9978ca9d6492a11ecc793800cc9</MFFrameWork.Version>
+       <!--<MFFrameWork.Version>0.0.0-0-SNAPSHOT</MFFrameWork.Version>-->
+       <jib.container-name>holgerfischer/myfinance-mfshell:</jib.container-name>
+   </properties>
 
-    <dependencies>
+   <dependencies>
 
-        <dependency>
-            <groupId>de.hf.myfinance</groupId>
-            <artifactId>mfframework</artifactId>
-            <version>${MFFrameWork.Version}</version>
-        </dependency>
+       <dependency>
+           <groupId>de.hf.myfinance</groupId>
+           <artifactId>mfframework</artifactId>
+           <version>${MFFrameWork.Version}</version>
+       </dependency>
 
-        <dependency>
-            <groupId>org.springframework.shell</groupId>
-            <artifactId>spring-shell-starter</artifactId>
-            <version>${springshell.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-            <scope>compile</scope>
-        </dependency>
+       <dependency>
+           <groupId>org.springframework.shell</groupId>
+           <artifactId>spring-shell-starter</artifactId>
+           <version>${springshell.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.cloud</groupId>
+           <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+           <scope>compile</scope>
+       </dependency>
 
-        <dependency>
-            <groupId>de.hf.myfinance</groupId>
-            <artifactId>mfapi</artifactId>
-            <version>${MFFrameWork.Version}</version>
-        </dependency>
+       <dependency>
+           <groupId>de.hf.myfinance</groupId>
+           <artifactId>mfapi</artifactId>
+           <version>${MFFrameWork.Version}</version>
+       </dependency>
 
-    </dependencies>
+   </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib-maven-plugin.version}</version>
-                <configuration>
-                    <from>
-                        <image>${jib.baseimage}</image>
-                    </from>
-                    <to>
-                        <image>${jib.container-repo}${jib.container-name}${project.version}</image>
-                    </to>
-                    <container>
-                        <mainClass>de.hf.myfinance.mfshell.MFShellApplication</mainClass>
-                    </container>
-                    <allowInsecureRegistries>true</allowInsecureRegistries>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+           </plugin>
+           <plugin>
+               <groupId>com.google.cloud.tools</groupId>
+               <artifactId>jib-maven-plugin</artifactId>
+               <version>${jib-maven-plugin.version}</version>
+               <configuration>
+                   <from>
+                       <image>${jib.baseimage}</image>
+                   </from>
+                   <to>
+                       <image>${jib.container-repo}${jib.container-name}${project.version}</image>
+                   </to>
+                   <container>
+                       <mainClass>de.hf.myfinance.mfshell.MFShellApplication</mainClass>
+                   </container>
+                   <allowInsecureRegistries>true</allowInsecureRegistries>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
 
-    <repositories>
-        <repository>
-            <id>mynexus-release</id>
-            <name>mynexus release</name>
-            <url>http://192.168.100.73:31001/repository/maven-releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+   <repositories>
+       <repository>
+           <id>mynexus-release</id>
+           <name>mynexus release</name>
+           <url>http://192.168.100.73:31001/repository/maven-releases/</url>
+           <releases>
+               <enabled>true</enabled>
+           </releases>
+           <snapshots>
+               <enabled>false</enabled>
+           </snapshots>
+       </repository>
+   </repositories>
 
 </project>
 

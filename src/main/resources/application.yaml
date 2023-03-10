@@ -1,0 +1,24 @@
+logging:
+  level:
+    root: INFO
+    de.hf.myfinance: DEBUG
+
+
+
+spring.cloud.stream:
+  defaultBinder: rabbit
+  default.contentType: application/json
+  bindings.processRecurrentTransaction-out-0:
+    destination: processRecurrentTransaction
+    producer:
+      required-groups: processRecurrentTransactionAuditGroup
+  bindings.loadNewMarketData-out-0:
+    destination: loadNewMarketData
+    producer:
+      required-groups: loadNewMarketDataAuditGroup
+
+spring.rabbitmq:
+  host: 192.168.100.73
+  port: 30021
+  username: user
+  password: vulkan

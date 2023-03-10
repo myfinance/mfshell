@@ -1,81 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>de.hf.dac</groupId>
-    <artifactId>client</artifactId>
-    <packaging>pom</packaging>
+    <groupId>de.hf.myfinance.mftransactions</groupId>
+    <artifactId>mfshell</artifactId>
     <version>0.0.0-0-SNAPSHOT</version>
-    <modules>
-        <module>baserunner</module>
-        <module>myfinance-java-rest-client</module>
-        <module>myfinancerunner</module>
-        <module>run-job</module>
-        <module>mf-docker-images</module>
-    </modules>
-
-        <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        <backend.version>0.15.0</backend.version>
-        <picocli.version>3.4.0</picocli.version><!-- parsing commandline options in Module common-->
-
-        <junit.version>4.12</junit.version>
-        <slf4j.version>1.7.21</slf4j.version><!-- logging slf impl-->
-        <commons-codec.version>1.10</commons-codec.version>
-
-        <!--rest-->
-        <swagger.version>1.6.2</swagger.version>
-        <swagger-codegen.version>2.3.1</swagger-codegen.version>
-        <jackson.version>2.10.1</jackson.version>
-
-        <spring-servicemix.version>4.2.6.RELEASE_1</spring-servicemix.version>
-        <rs-api-jersey-client.version>1.5.18</rs-api-jersey-client.version>
-
-        <assembly-plugin.version>3.1.0</assembly-plugin.version>
-        <dependency-plugin.version>3.0.2</dependency-plugin.version>
-        <resource-plugin.version>3.0.2</resource-plugin.version>
-        <deploy-plugin.version>2.8.2</deploy-plugin.version>
-        <clean-plugin.version>3.0.0</clean-plugin.version>
-        <install-plugin.version>2.5.2</install-plugin.version>
-        <failsaveplugin.version>2.21.0</failsaveplugin.version>
-        <surefire-plugin.version>2.21.0</surefire-plugin.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-        <jar-plugin.version>3.0.2</jar-plugin.version>
-
+    <name>MFShell</name>
+    <parent>
+        <groupId>de.hf.myfinance</groupId>
+        <artifactId>root</artifactId>
+        <version>0.0.0-0-SNAPSHOT</version>
+        <!--<version>0.22.0-alpha.792d0ff0760b9c20ff2140ee9f709fb0ec9d8fbc</version>-->
+       <relativePath/>
+   </parent>
+   <properties>
+       <NEXUS_URL>192.168.100.73:31001</NEXUS_URL>
+       <!--<MFFrameWork.Version>0.22.0-alpha.792d0ff0760b9c20ff2140ee9f709fb0ec9d8fbc</MFFrameWork.Version>-->
+        <MFFrameWork.Version>0.0.0-0-SNAPSHOT</MFFrameWork.Version>
+        <jib.container-name>holgerfischer/myfinance-mfshell:</jib.container-name>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>localRepo</id>
-            <name>localRepo</name>
-            <url>${targetRepository}</url>
-        </repository>
-    </distributionManagement>
+    <dependencies>
+
+        <dependency>
+            <groupId>de.hf.myfinance</groupId>
+            <artifactId>mfframework</artifactId>
+            <version>${MFFrameWork.Version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.shell</groupId>
+            <artifactId>spring-shell-starter</artifactId>
+            <version>${springshell.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>de.hf.myfinance</groupId>
+            <artifactId>mfapi</artifactId>
+            <version>${MFFrameWork.Version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${jib-maven-plugin.version}</version>
+                <configuration>
+                    <from>
+                        <image>${jib.baseimage}</image>
+                    </from>
+                    <to>
+                        <image>${jib.container-repo}${jib.container-name}${project.version}</image>
+                    </to>
+                    <container>
+                        <mainClass>de.hf.myfinance.mfshell.MFShellApplication</mainClass>
+                    </container>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
-     <repository>
-      <id>mynexus-snapshot</id>
-      <name>mynexus snapshot</name>
-      <url>http://${NEXUS_URL}/repository/maven-snapshots/</url>
-      <releases>
-       <enabled>false</enabled>
-      </releases>
-      <snapshots>
-       <enabled>true</enabled>
-      </snapshots>
-     </repository>
-     <repository>
-      <id>mynexus-release</id>
-      <name>mynexus release</name>
-      <url>http://${NEXUS_URL}/repository/maven-releases/</url>
-      <releases>
-       <enabled>true</enabled>
-      </releases>
-      <snapshots>
-       <enabled>false</enabled>
-      </snapshots>
-     </repository>     
-   </repositories>    
+        <repository>
+            <id>mynexus-release</id>
+            <name>mynexus release</name>
+            <url>http://192.168.100.73:31001/repository/maven-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
 </project>
+

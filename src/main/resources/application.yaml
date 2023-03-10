@@ -3,7 +3,9 @@ logging:
     root: INFO
     de.hf.myfinance: DEBUG
 
-
+spring:
+  main:
+    web-application-type: NONE
 
 spring.cloud.stream:
   defaultBinder: rabbit
@@ -22,3 +24,6 @@ spring.rabbitmq:
   port: 30021
   username: user
   password: vulkan
+
+job:
+  name: importMarketData

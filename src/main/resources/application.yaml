@@ -15,7 +15,7 @@ spring.cloud.stream:
     producer:
       required-groups: processRecurrentTransactionAuditGroup
   bindings.loadNewMarketData-out-0:
-    destination: loadNewMarketData
+    destination: loadNewMarketDataRequest
     producer:
       required-groups: loadNewMarketDataAuditGroup
 

@@ -2,7 +2,7 @@
 
 build local:
 mvn clean install -DtargetRepository=http://192.168.100.73:31001/repository/maven-releases/ -DNEXUS_URL=192.168.100.73:31001
-or modify mvn settings
+or modify mvn settings: mvn clean install -s settings.xml
 
 to install the application manually with helm: 
 helm repo update

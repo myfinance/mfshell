@@ -11,13 +11,13 @@ spring.cloud.stream:
   defaultBinder: rabbit
   default.contentType: application/json
   bindings.processRecurrentTransaction-out-0:
-    destination: processRecurrentTransaction
+    destination: processRecurrentTransactions
     producer:
-      required-groups: processRecurrentTransactionAuditGroup
+      required-groups: processRecurrentTransactionsGroup
   bindings.loadNewMarketData-out-0:
-    destination: loadNewMarketDataRequest
+    destination: loadNewMarketData
     producer:
-      required-groups: loadNewMarketDataAuditGroup
+      required-groups: loadNewMarketDataGroup
 
 spring.rabbitmq:
   host: 192.168.100.73

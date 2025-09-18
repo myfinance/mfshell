@@ -3,7 +3,8 @@ package de.hf.myfinance.mfshell;
 import de.hf.framework.audit.AuditService;
 import de.hf.framework.audit.Severity;
 import de.hf.myfinance.event.Event;
-import org.springframework.beans.factory.annotation.Autowired;
+import de.hf.myfinance.restmodel.MarketDataImportType;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +26,6 @@ public class MFShellApplication implements CommandLineRunner {
 
     @Value("${job.name}")         String job;
 
-    @Autowired
     public MFShellApplication(AuditService auditService, StreamBridge streamBridge) {
         this.auditService = auditService;
         this.streamBridge = streamBridge;
@@ -36,10 +36,14 @@ public class MFShellApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if(job.equals("importMarketData")) {
-            importMarketData();
+        if(job.equals("importTimeseriesWeekly")) {
+            importTimeseriesWeekly();
         } else if(job.equals("processTransactions")) {
             processTransactions();
+        } else if(job.equals("importSecurityMetrics")) {
+            importSecurityMetrics();
+        } else if(job.equals("importPrevClose")) {
+            importPrevClose();
         }
 
     }
@@ -48,22 +52,40 @@ public class MFShellApplication implements CommandLineRunner {
     {
         auditService.saveMessage("start process Transactions", Severity.INFO, AUDIT_MSG_TYPE);
 
-        sendMessage("processRecurrentTransaction-out-0", new Event<>(START, "processRecurrentTransactions", null));
-
+        Event<String, Object> event = new Event<>(START, "processRecurrentTransactions", null);
+        Message<Event<String, Object>> message = MessageBuilder.withPayload(event)
+                .setHeader("partitionKey", event.getKey())
+                .build();
+        streamBridge.send("processRecurrentTransaction-out-0", message);
     }
 
-    private void importMarketData()
+    private void importTimeseriesWeekly()
+    {
+        auditService.saveMessage("start import alphavantage prices", Severity.INFO, AUDIT_MSG_TYPE);
+        Event<MarketDataImportType, Object> event = new Event<>(START, MarketDataImportType.TIME_SERIES_WEEKLY, "all");
+        sendMessage("loadNewMarketData-out-0", event);
+    }
+
+    private void importSecurityMetrics()
     {
         auditService.saveMessage("start import marketdata", Severity.INFO, AUDIT_MSG_TYPE);
-        sendMessage("loadNewMarketData-out-0", new Event<>(START, "loadNewMarketData", null));
+        Event<MarketDataImportType, Object> event = new Event<>(START, MarketDataImportType.SECURITYMETRICS, "all");
+        sendMessage("loadNewMarketData-out-0", event);
+    }
+
+    private void importPrevClose()
+    {
+        auditService.saveMessage("start import marketdata", Severity.INFO, AUDIT_MSG_TYPE);
+        Event<MarketDataImportType, Object> event = new Event<>(START, MarketDataImportType.PREV_CLOSE, "all");
+        sendMessage("loadNewMarketData-out-0", event);
     }
 
     /**
      * Since the sendMessage() uses blocking code, when calling streamBridge,
      * it has to be executed on a thread provided by a dedicated scheduler, publishEventScheduler
      */
-    private boolean sendMessage(String bindingName, Event<String, Object> event) {
-        Message<Event<String, Object>> message = MessageBuilder.withPayload(event)
+    private boolean sendMessage(String bindingName, Event<MarketDataImportType, Object> event) {
+        Message<Event<MarketDataImportType, Object>> message = MessageBuilder.withPayload(event)
                 .setHeader("partitionKey", event.getKey())
                 .build();
         return streamBridge.send(bindingName, message);
